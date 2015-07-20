@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import "NetworkModelDownloader.h"
 
 @interface HitManTests : XCTestCase
 
@@ -25,9 +26,17 @@
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    XCTAssert(YES, @"Pass");
+- (void)testNetworkModelDownloader {
+    XCTestExpectation *testExpectation = [self expectationWithDescription:@"Test expectation"];
+    [NetworkModelDownloader fetchMovieData:@0
+                       withCompletionBlock:^(NSError *error, NSDictionary *jsonDictionary) {
+                           XCTAssertNotNil(jsonDictionary, "data should not be nill");
+                           XCTAssertNil(error,"Error should be nil");
+                           [testExpectation fulfill];
+                       }];
+    [self waitForExpectationsWithTimeout:5.0 handler:nil];
+    
+
 }
 
 - (void)testPerformanceExample {

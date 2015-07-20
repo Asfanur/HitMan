@@ -7,9 +7,11 @@
 //
 
 #import "TableViewController.h"
-
+#import "NetworkModelDownloader.h"
+#import "ConstantCollection.h"
+#import "ShowData.h"
 @interface TableViewController ()
-
+@property (nonatomic,strong) NSArray *movieData;
 @end
 
 @implementation TableViewController
@@ -35,6 +37,32 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
      
     return cell;
+}
+
+-(void)downloadShowsWithOffset:(NSNumber *)offset {
+    [NetworkModelDownloader fetchMovieData:offset withCompletionBlock:^(NSError *error, NSDictionary *jsonDictionary) {
+        if (error) {
+            
+            
+        } else {
+            NSMutableArray *tempArray = [[NSMutableArray alloc] init];
+            
+            for (NSDictionary *dictionary  in jsonDictionary[kResults]) {
+               ShowData *showData = [[ShowData alloc] initWithName:dictionary[kName]
+                                                      andstartTime:dictionary[kStartTime]
+                                                           endTime:dictionary[kEndTime]
+                                                          channell:dictionary[kChannel]
+                                                         andRating:dictionary[kRating]];
+                [tempArray addObject:showData];
+            }
+            
+            self.movieData = [tempArray copy];
+            [self.tableView reloadData];
+            
+             
+        }
+    }];
+    
 }
 
 
