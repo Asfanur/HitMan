@@ -10,11 +10,11 @@
 		3A0E796A1B5CC96A00461FB5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0E79691B5CC96A00461FB5 /* main.m */; };
 		3A0E796D1B5CC96A00461FB5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0E796C1B5CC96A00461FB5 /* AppDelegate.m */; };
 		3A0E79701B5CC96A00461FB5 /* HitMan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3A0E796E1B5CC96A00461FB5 /* HitMan.xcdatamodeld */; };
-		3A0E79731B5CC96A00461FB5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0E79721B5CC96A00461FB5 /* ViewController.m */; };
 		3A0E79761B5CC96A00461FB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A0E79741B5CC96A00461FB5 /* Main.storyboard */; };
 		3A0E79781B5CC96A00461FB5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A0E79771B5CC96A00461FB5 /* Images.xcassets */; };
 		3A0E797B1B5CC96A00461FB5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A0E79791B5CC96A00461FB5 /* LaunchScreen.xib */; };
 		3A0E79871B5CC96A00461FB5 /* HitManTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0E79861B5CC96A00461FB5 /* HitManTests.m */; };
+		3A1477FD1B5D10C30088E696 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1477FC1B5D10C30088E696 /* TableViewController.m */; };
 		4E0EBF2D1167D6A9F3F01E13 /* libPods-HitMan.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C632219466F910E23D37A50 /* libPods-HitMan.a */; };
 /* End PBXBuildFile section */
 
@@ -35,14 +35,14 @@
 		3A0E796B1B5CC96A00461FB5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3A0E796C1B5CC96A00461FB5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3A0E796F1B5CC96A00461FB5 /* HitMan.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HitMan.xcdatamodel; sourceTree = "<group>"; };
-		3A0E79711B5CC96A00461FB5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		3A0E79721B5CC96A00461FB5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3A0E79751B5CC96A00461FB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A0E79771B5CC96A00461FB5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3A0E797A1B5CC96A00461FB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		3A0E79801B5CC96A00461FB5 /* HitManTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HitManTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A0E79851B5CC96A00461FB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A0E79861B5CC96A00461FB5 /* HitManTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HitManTests.m; sourceTree = "<group>"; };
+		3A1477FB1B5D10C30088E696 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		3A1477FC1B5D10C30088E696 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		55C163B6F11D17D54AB0C132 /* Pods-HitMan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HitMan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HitMan/Pods-HitMan.debug.xcconfig"; sourceTree = "<group>"; };
 		6B9684FEC7C543B4206E1FE7 /* Pods-HitMan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HitMan.release.xcconfig"; path = "Pods/Target Support Files/Pods-HitMan/Pods-HitMan.release.xcconfig"; sourceTree = "<group>"; };
 		7C632219466F910E23D37A50 /* libPods-HitMan.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HitMan.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,13 +100,13 @@
 			children = (
 				3A0E796B1B5CC96A00461FB5 /* AppDelegate.h */,
 				3A0E796C1B5CC96A00461FB5 /* AppDelegate.m */,
-				3A0E79711B5CC96A00461FB5 /* ViewController.h */,
-				3A0E79721B5CC96A00461FB5 /* ViewController.m */,
 				3A0E79741B5CC96A00461FB5 /* Main.storyboard */,
 				3A0E79771B5CC96A00461FB5 /* Images.xcassets */,
 				3A0E79791B5CC96A00461FB5 /* LaunchScreen.xib */,
 				3A0E796E1B5CC96A00461FB5 /* HitMan.xcdatamodeld */,
 				3A0E79671B5CC96A00461FB5 /* Supporting Files */,
+				3A1477FB1B5D10C30088E696 /* TableViewController.h */,
+				3A1477FC1B5D10C30088E696 /* TableViewController.m */,
 			);
 			path = HitMan;
 			sourceTree = "<group>";
@@ -283,8 +283,8 @@
 			files = (
 				3A0E796D1B5CC96A00461FB5 /* AppDelegate.m in Sources */,
 				3A0E796A1B5CC96A00461FB5 /* main.m in Sources */,
-				3A0E79731B5CC96A00461FB5 /* ViewController.m in Sources */,
 				3A0E79701B5CC96A00461FB5 /* HitMan.xcdatamodeld in Sources */,
+				3A1477FD1B5D10C30088E696 /* TableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

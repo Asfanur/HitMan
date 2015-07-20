@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  TableViewController.h
 //  HitMan
 //
 //  Created by Asfanur Arafin on 20/07/2015.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface TableViewController : UITableViewController
 
 @end
-
