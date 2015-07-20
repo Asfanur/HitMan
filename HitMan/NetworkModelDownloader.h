@@ -6,8 +6,13 @@
 //  Copyright (c) 2015 Asfanur Arafin. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface NetworkModelDownloader : NSObject
+
+typedef void (^CompletionBlock)(NSError *error, NSDictionary *jsonDictionary);
+
++(void)fetchMovieData:(NSNumber *)offset withCompletionBlock:(CompletionBlock)completionBlock;
+
 
 @end
