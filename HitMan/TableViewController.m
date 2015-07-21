@@ -10,14 +10,19 @@
 #import "NetworkModelDownloader.h"
 #import "ConstantCollection.h"
 #import "ShowData.h"
-@interface TableViewController ()
+#import "TableViewCell.h"
+@interface TableViewController () {
+    int page;
+}
 @property (nonatomic,strong) NSArray *movieData;
+@property (nonatomic) BOOL isRefreshing;
 @end
 
 @implementation TableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self downloadShowsWithOffset:@0];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,19 +34,39 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-     return 0;
+     return self.movieData.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    ShowData *showData  = self.movieData[indexPath.row];
+    cell.name.text = showData.name;
+    cell.startTime.text = showData.startTime;
+    cell.endTime.text = showData.endTime;
+    cell.channell.text = showData.channel;
+    cell.rating.text = showData.rating;
+    
      
     return cell;
 }
 
 -(void)downloadShowsWithOffset:(NSNumber *)offset {
     [NetworkModelDownloader fetchMovieData:offset withCompletionBlock:^(NSError *error, NSDictionary *jsonDictionary) {
+        self.isRefreshing = NO;
         if (error) {
+            page--;
+            UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                                message:error.localizedDescription
+                                                                         preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction *action) {
+                                                                 [controller dismissViewControllerAnimated:YES completion:nil];
+                                                             }];
+            
+            [controller addAction:okAction];
+            [self presentViewController:controller animated:YES completion:nil];
             
             
         } else {
@@ -64,50 +89,15 @@
     }];
     
 }
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    if (self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height)) {
+        if (!self.isRefreshing) {
+            self.isRefreshing = YES;
+            [self downloadShowsWithOffset:[NSNumber numberWithInt:page++]];
+        }
+    }
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
