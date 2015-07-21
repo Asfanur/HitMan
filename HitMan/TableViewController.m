@@ -23,11 +23,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self downloadShowsWithOffset:@0];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(preferredContentSizeDidChangeNotification:)
+                                                 name:UIContentSizeCategoryDidChangeNotification object:nil];
+    self.tableView.estimatedRowHeight = 100.0;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+}
+
+-(void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIContentSizeCategoryDidChangeNotification
+                                                  object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
+}
+
+-(void)preferredContentSizeDidChangeNotification:(NSNotification *)notification {
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
